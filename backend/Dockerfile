@@ -20,7 +20,7 @@ RUN poetry config virtualenvs.create false \
     && poetry config virtualenvs.in-project false
 
 # Install dependencies
-RUN poetry install --no-dev
+RUN poetry install --only main
 
 # Copy application code
 COPY . .
