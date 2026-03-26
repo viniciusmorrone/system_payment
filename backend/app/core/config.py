@@ -1,7 +1,8 @@
 from typing import List
+from pydantic_settings import BaseSettings
 
 
-class Settings:
+class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/projeto_point"
     
@@ -22,6 +23,10 @@ class Settings:
     SUPABASE_URL: str = ""
     SUPABASE_ANON_KEY: str = ""
     SUPABASE_SERVICE_ROLE_KEY: str = ""
+
+    class Config:
+        env_file = ".env"
+        case_sensitive = True
 
 
 settings = Settings()
