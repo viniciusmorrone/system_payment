@@ -75,15 +75,22 @@ def do_run_migrations(connection: Connection) -> None:
 
 
 async def run_async_migrations() -> None:
+    url = get_url()
     """In this scenario we need to create an Engine
     and associate a connection with the context.
-
     """
+    # Adiciona SSL explícito para o Supabase
+    connect_args = {}
+    if "supabase" in url:
+        import ssl
+        ssl_context = ssl.create_default_context()
+        connect_args["ssl"] = ssl_context
 
     connectable = async_engine_from_config(
-        {"sqlalchemy.url": get_url()},
+        {"sqlalchemy.url": url},
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
+        connect_args=connect_args,
     )
 
     async with connectable.connect() as connection:
