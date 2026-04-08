@@ -2,6 +2,57 @@
 
 ## 🚨 Erros Vercel
 
+### Erro: 404 - Page Not Found
+
+**Sintomas:**
+```
+404 - This page could not be found
+```
+
+**Causas Comuns:**
+1. Root Directory não configurado
+2. vercel.json com configuração incorreta
+3. Build não completou corretamente
+
+**Soluções:**
+
+1. **Configurar Root Directory na Vercel**
+   ```
+   Vercel Dashboard → Settings → General → Root Directory
+   
+   Root Directory: frontend
+   
+   ✅ Save
+   ```
+
+2. **Verificar vercel.json**
+   ```json
+   // vercel.json deve ser simples:
+   {
+     "version": 2
+   }
+   
+   // ❌ NÃO use rewrites para Next.js
+   // ❌ NÃO configure framework manualmente
+   ```
+
+3. **Redeploy após configurar**
+   ```
+   Vercel Dashboard → Deployments → Redeploy
+   ✅ Clear build cache and deploy
+   ```
+
+4. **Verificar Build Logs**
+   ```
+   Vercel Dashboard → Deployments → [Latest] → Building
+   
+   Procure por:
+   ✅ "Build Completed"
+   ✅ "Deployment Ready"
+   ```
+
+---
+
 ### Erro: "Build failed" ou "Command failed"
 
 **Sintomas:**
