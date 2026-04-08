@@ -1,0 +1,7 @@
+backend/
+docker-compose.yml
+docker-compose.prod.yml
+.git/
+.github/
+*.md
+usuarios.py
